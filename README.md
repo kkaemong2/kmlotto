@@ -1,6 +1,6 @@
 # kmlotto 실행
--pip install -r requirements.txt
--python -m streamlit run app.py
+- pip install -r requirements.txt
+- python -m streamlit run app.py
 
 ## app.py
 - Streamlit 웹 애플리케이션 실행
