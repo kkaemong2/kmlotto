@@ -1,4 +1,5 @@
 import requests # 인터넷 서버에 데이터를 요청할 때 사용하는 라이브러리
+from pathlib import Path
 
 # https://www.dhlottery.co.kr/lt645/selectPstLt645InfoNew.do?srchDir=center&srchLtEpsd=1249&_=1794116699277
 
@@ -16,4 +17,8 @@ HEADERS = {
 }
 
 
-DATA_FILE = r"C:\Users\gusco\Desktop\Work\Ex1\data\lotto_data.json" # 당첨번호를 저장할 파일 위치
+# 프로젝트 최상위 폴더
+BASE_DIR = Path(__file__).resolve().parent.parent # 현재 경로를 가져오고 resolve(절대 경로로 변환)
+
+# data 폴더의 로또 데이터 파일
+DATA_FILE = BASE_DIR / "data" / "lotto_data.json"
