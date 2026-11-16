@@ -125,15 +125,18 @@ if "data_update_checked" not in st.session_state:
 
     except Exception as e:
 
-        # 오류가 발생해도 기존 데이터로 프로그램 사용 가능
+        # 오류가 발생한 상태 기록
         st.session_state["data_update_status"] = "error"
-        st.session_state["data_update_message"] = (
-            "최신 데이터 확인에 실패했습니다. "
-            "기존에 저장된 데이터로 화면을 표시합니다."
-        )
 
-        # 터미널에 실제 오류 내용 출력
-        print(f"로또 데이터 자동 갱신 오류: {e}")
+        # 실제 오류 내용도 함께 저장
+        st.session_state["data_update_message"] = (
+            f"최신 데이터 확인에 실패했습니다.\n\n"
+            f"오류 내용: {type(e).__name__}: {e}\n\n"
+            f"기존에 저장된 데이터로 화면을 표시합니다."
+    )
+
+        # 로그에도 오류 내용 출력
+        print(f"로또 데이터 자동 갱신 오류: {type(e).__name__}: {e}")
 
 # 웹사이트 디자인 설정  (CSS코드로 화면 모양을 조절)
 st.markdown("""
